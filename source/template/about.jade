@@ -1,0 +1,101 @@
+include common/_mixins
+doctype html
+html
+	include common/_head
+	body
+		include common/_preloader
+
+		<!--[if lt IE 7]>
+		<p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите его</a></p>
+		<![endif]-->
+		include common/_gmap
+		include common/_sprites
+		
+
+		include common/_parallax
+		+main-menu(3)
+
+		header.header.table-box.fullheight.fullheight_mih
+			.table-box__top
+				+header-top
+			.table-box__middle
+				.vertical-aligned
+					.site-author
+						+avatar("me.jpg", "Расскажу о себе", "Фото")
+						p.site-author__name Максим Алексеев
+						p.site-author__description Обо мне
+
+					svg.header__svg-bg
+						use(xlink:href="#icon-portfolio_header")
+					button.go-down.fa.fa-chevron-down(data-link=".about-me")
+
+					svg(preserveAspectRatio="none" viewBox="0 0 1000 400").header__svg-corner.header__svg-corner_left
+						use(xlink:href="#icon-about_bg_left")
+					svg(preserveAspectRatio="none" viewBox="0 0 1000 400").header__svg-corner.header__svg-corner_right
+						use(xlink:href="#icon-about_bg_right")
+
+
+
+		section.about-me
+			.about-me__stretcher.about-me__stretcher_dark
+				.about-me__stretcher.about-me__stretcher_light
+					.about-me__bio.bio
+						+svg-heading("Обо мне", "icon-about_header")
+						.bio__main-image
+							img(src="/assets/img/me.jpg", alt="Максим Алексеев", title="Frontend.")
+						h3.bio__heading.sidestripes Кто я?
+						.bio__about
+							p.
+								Я начинающий веб-разработчик из Новосибирска, мне 26 лет. Очень хочу постичь java-script и обрести дзен.
+							p.
+								Этот сайт сделан в рамках обучения в loftschool.
+
+					.about-me__skills.skills
+						h3.skills__heading.sidestripes Чем я могу быть вам полезен
+						.skills__descr
+							p.
+								Могу сверстать вам сайт, немного пошаманить с jquery, скоро приобщусь к бэкенду и js и буду ну оооочень полезный)
+
+						.skills__group
+							.group__title Frontend
+							+pie_chart("Html 5",80)
+							+pie_chart("CSS 3",60)
+							+pie_chart("Js & Jquery",30)
+						.skills__group
+							.group__title Backend
+							+pie_chart("Php",6)
+							+pie_chart("MySql",2)
+							+pie_chart("Node.js & npm",6)
+							+pie_chart("Mongo.db",1)
+						.skills__group
+							.group__title Workflow
+							+pie_chart("Git",50)
+							+pie_chart("Gulp",30)
+							+pie_chart("Bower",30)
+
+
+		section.contacts.last-section.fullheight.fullheight_mih
+			.contacts__map
+				#map_wrapper
+			.contacts__info
+				.contacts__heading
+					h3.sidestripes Контакты
+				ul.contacts__links
+					li.link-wrapper
+						a.link(href="#")
+							i.fa.fa-skype
+							| fck_phml
+					li.link-wrapper
+						a.link(href="#")
+							i.fa.fa-envelope
+							|fckphml@gmail.com
+					li.link-wrapper
+						a.link(href="#")
+							i.fa.fa-phone
+							| +79513876783
+					li.link-wrapper
+						a.link(href="#")
+							i.fa.fa-map-marker
+							| Новосибирск
+
+		include common/_footer
